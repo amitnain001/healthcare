@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .slick-arrow::before {
+  display: none !important;
+} */
+.slick-next {
+  right: 0px !important;
+}
