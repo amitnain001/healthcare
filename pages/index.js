@@ -24,7 +24,7 @@ const index = ({ posts }) => {
 
         {/* -------------------------------------  Latest Stories section     ----------------------- */}
 
-        <div className="container md:mt-16 md:mb-5 px-5 pt-20 mx-auto  ">
+        <div className="container  md:py-5 px-5 mt-20 mx-auto  ">
           <div className='text-xl md:text-2xl text-blue-500 mb-5 font-bold'>स्वास्थ्य औ<span className='text-gray-500'>र बीमारियां</span></div>
           <div className="flex flex-wrap -m-2 ">
             {posts && posts.map((e) => {
