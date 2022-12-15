@@ -1,14 +1,24 @@
-import '../styles/globals.css'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Loading from '../components/Loading';
+import '../styles/globals.css';
+import { useEffect } from 'react'
+import Router from 'next/router'
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
-
+  const [loadingSpinner, setloadingSpinner] = useState(true);
+  useEffect(() => {
+    setloadingSpinner(false)
+  }, [])
+  Router.events.on('routeChangeStart', () => {
+    setloadingSpinner(true)
+  })
+  Router.events.on('routeChangeComplete', () => {
+    setloadingSpinner(false)
+  })
   return <>
-    <Navbar></Navbar>
+    {loadingSpinner && <Loading />}
     <Component {...pageProps} />
-    <Footer/>
   </>
 }
 
-export default MyApp
+export default MyApp;
