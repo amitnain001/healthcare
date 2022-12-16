@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import Layout from '../../components/Layout';
 import PortableText from "react-portable-text";
 import { AiFillFacebook, AiFillTwitterCircle, AiOutlineWhatsApp, AiOutlineInstagram } from 'react-icons/ai';
+import allpostdata from '../../websitecontent/allpost.json';
 
 
 
@@ -79,7 +80,27 @@ const Slug = ({ posts }) => {
                         )
                     }
                 })}
-
+                <div className="container  py-24 mx-auto">
+                    <div className='text-xl md:text-2xl text-blue-500 my-10 font-bold'>More Health <span className='text-gray-500'> News</span></div>
+                    <div className="flex flex-wrap -m-4">
+                        {allpostdata.allpostdata.map((e) => {
+                            if (e.about == "More Health News") {
+                                return (<Link key={e.id} className="lg:w-1/3 sm:w-1/2 block  
+                            " href={`/post/${e.slug}`} >
+                                    <div class=" p-4">
+                                        <div class="bg-gray-100 p-6 rounded-lg">
+                                            <img class="h-40 rounded w-full object-cover object-center mb-6" src={e.image} alt="content" />
+                                            <h2 className="tracking-widest text-sm title-font font-medium text-blue-500 mb-1">{e.type}</h2>
+                                            <h1 className="title-font text-lg font-medium hover:underline text-gray-900 mb-3">{e.heading} </h1>
+                                        </div>
+                                    </div>
+                                </Link>)
+                            } else {
+                                return;
+                            }
+                        })}
+                    </div>
+                </div>
             </div>
         </Layout>
     </>
